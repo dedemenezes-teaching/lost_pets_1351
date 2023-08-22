@@ -1,15 +1,27 @@
-<%= form_with model: pet do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <%= f.label :found_on %>
-  <%= f.date_field :found_on %>
-  <%= f.label :species %>
-  <%= f.select :species, Pet::SPECIES %>
-  <% if pet.id %>
-    <%= f.label :adopted %>
-    <%= f.check_box :adopted %>
+<!--
+  <%= form_with model: pet do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <%= f.label :found_on %>
+    <%= f.date_field :found_on %>
+    <%= f.label :species %>
+    <%= f.select :species, Pet::SPECIES %>
+    <% if pet.id %>
+      <%= f.label :adopted %>
+      <%= f.check_box :adopted %>
+    <% end %>
+    <%= f.submit %>
   <% end %>
-  <%= f.submit %>
+-->
+
+<%= simple_form_for pet do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :found_on %>
+  <%= f.input :species, collection: Pet::SPECIES %>
+  <% if pet.id %>
+    <%= f.input :adopted %>
+  <% end %>
 <% end %>
