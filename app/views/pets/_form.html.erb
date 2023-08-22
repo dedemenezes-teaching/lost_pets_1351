@@ -1,0 +1,15 @@
+<%= form_with model: pet do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <%= f.label :found_on %>
+  <%= f.date_field :found_on %>
+  <%= f.label :species %>
+  <%= f.select :species, Pet::SPECIES %>
+  <% if pet.id %>
+    <%= f.label :adopted %>
+    <%= f.check_box :adopted %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
